@@ -11,5 +11,28 @@ module.exports = {
         "ecmaVersion": 12
     },
     "rules": {
+        "indent": [
+            "error",
+            { "SwitchCase": 1 }
+        ],
+        "quotes": [
+           "error",
+           "double"
+         ],
+         "semi": [
+            "error",
+            "always"
+         ],
+         "no-unused-vars": [
+            "error",
+            {
+                "vars": "all",
+                "args": "none"
+            }
+         ],
+         "no-console": [
+            "off"
+         ]
+
     }
 };
