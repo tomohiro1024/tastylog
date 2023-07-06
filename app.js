@@ -6,6 +6,7 @@ const app = express()
 
 // expressのセッティング
 app.set("view engine", "ejs")
+app.disable("x-powered-by")
 
 // 静的コンテンツ
 app.use(favicon(path.join(__dirname, "/public/favicon.ico")))
