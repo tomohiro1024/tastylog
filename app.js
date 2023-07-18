@@ -20,6 +20,13 @@ app.use(accesslogger())
 
 // 動的コンテンツ
 app.use("/", require("./routes/index.js"))
+app.use("/test", async(req, res, next)=>{
+    const { promisify } = require("util")
+    const path = require("path")
+    const { sql } = require("@garafu/mysql-fileloader")({ root: path.join(__dirname, "./lib/database/sql")})
+    const config = require("./config/mysql.config.js")
+    const mysql = require("mysql")
+})
 
 // アプリケーションログ
 app.use(applicationlogger())
