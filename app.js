@@ -21,35 +21,18 @@ app.use(accesslogger())
 // 動的コンテンツ
 app.use("/", require("./routes/index.js"))
 app.use("/test", async(req, res, next)=>{
-    const { promisify } = require("util")
-    const path = require("path")
-    const { sql } = require("@garafu/mysql-fileloader")({ root: path.join(__dirname, "./lib/database/sql")})
-    const config = require("./config/mysql.config.js")
-    const mysql = require("mysql")
-    // sql接続
-    const con = mysql.createConnection({
-        host: config.HOST,
-        port: config.PORT,
-        user: config.USERNAME,
-        password: config.PASSWORD,
-        database: config.DATABASE
-    })
+const { MySQLClient, sql } = require("./lib/database/client.js")
     var data
-    const client = {
-        connect: promisify(con.connect).bind(con),
-        query: promisify(con.query).bind(con),
-        end: promisify(con.end).bind(con)
-    }
 
     try {
-       await client.connect()
-       data = await client.query(await sql("SELECT_SHOP_BASIC_BY_ID"))
+       await MySQLClient.connect()
+       data = await MySQLClient.query(await sql("SELECT_SHOP_BASIC_BY_ID"))
        console.log(data)
     } catch (e) {
         next(e)
     } finally {
         // 接続を切断
-        await client.end
+        await MySQLClient.end
     }
 
     res.end("OK")
