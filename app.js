@@ -25,14 +25,10 @@ const { MySQLClient, sql } = require("./lib/database/client.js")
     var data
 
     try {
-       await MySQLClient.connect()
-       data = await MySQLClient.query(await sql("SELECT_SHOP_BASIC_BY_ID"), [1])
+       data = await MySQLClient.executeQuery(await sql("SELECT_SHOP_BASIC_BY_ID"), [1])
        console.log(data)
     } catch (e) {
         next(e)
-    } finally {
-        // 接続を切断
-        await MySQLClient.end
     }
 
     res.end("OK")
