@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <%- include("./_share/metadata.ejs") %>
+  <%- include("../_share/metadata.ejs") %>
   <title>Document</title>
-  <%- include("./_share/stylesheets.ejs") %>
-  <link rel="stylesheet" href="/public/stylesheets/index.css">
+  <%- include("../_share/stylesheets.ejs") %>
+  <link rel="stylesheet" href="/public/stylesheets/shop.css">
 </head>
 <body>
-    <%= name %>
+    <div class="outerframe">
+      <%- include("./_share/navbar.ejs") %>
+      <main class="container">
+        <div class="border-bottom mt-5 mb-5">
+          <h1 class="display-4"><%= name %></h1>
+          <p class="h3">
+            <span class="rate-star" style="--rate: <%= (score/5.00)*100 %>%;"></span>
+            <span><%= padding(score) %></span>
+          </p>
+        </div>
+
+        <div>
+          <img class="mg-fluid" src="/public/images/dummy/1150x250.png" alt="">
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="border-bottom mt-5 mb-2"><i class="fa fa-fw fa-book"></i>Store Info</h2>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+
+      </main>
+      <%- include("./_share/footer.ejs") %>
+    </div>
+  <%- include("./_share/javascripts.ejs") %>
 </body>
 </html>
