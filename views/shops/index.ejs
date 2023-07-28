@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="outerframe">
-      <%- include("./_share/navbar.ejs") %>
+      <%- include("../_share/navbar.ejs") %>
       <main class="container">
         <div class="border-bottom mt-5 mb-5">
           <h1 class="display-4"><%= name %></h1>
@@ -24,16 +24,65 @@
 
         <div class="row">
             <div class="col-md-8">
-                <h2 class="border-bottom mt-5 mb-2"><i class="fa fa-fw fa-book"></i>Store Info</h2>
+                <h2 class="border-bottom mt-5 mb-3"><i class="fa fa-fw fa-book"></i>Store Info</h2>
+                <table class="table table-bordered">
+                    <colgroup>
+                        <col class="bg-light" style="width: 10rem;">
+                        <col>
+                    </colgroup>
+                    <tr>
+                        <th>Shop Name</th>
+                        <td><%= name %></td>
+                    </tr>
+                    <tr>
+                        <th>Category</th>
+                        <td><%= categories %></td>
+                    </tr>
+                    <tr>
+                        <th>Call</th>
+                        <td><%= tel %></td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>
+                            <div><%= address %></div>
+                            <div id="mapid"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Holiday</th>
+                        <td><%= holiday %></td>
+                    </tr>
+                    <tr>
+                        <th>Seats</th>
+                        <td><%= seats %></td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td><%= price_range %></td>
+                    </tr>
+                </table>
+                <div>
+                    <div class="position-relative">
+                        <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-comments"></i>Reviews</h2>
+                        <div class="position-absolute" style="right: 0; top: 0;">
+                            <a class="btn btn-outline-success" href="#">Post</a>
+                        </div>
+                    </div>
+                    <div>
+                        <!------ review -->
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
-                
+                <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-heart"></i>Recommends</h2>
+                <!------ Recommends -->
             </div>
         </div>
 
       </main>
-      <%- include("./_share/footer.ejs") %>
+      <%- include("../_share/footer.ejs") %>
     </div>
-  <%- include("./_share/javascripts.ejs") %>
+  <%- include("../_share/javascripts.ejs") %>
 </body>
 </html>
